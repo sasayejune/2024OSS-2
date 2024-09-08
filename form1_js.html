@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="form1_css.html">
+
+    <style>
+        body {
+            background-color: rgb(45, 135, 101);
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            color: rgb(66, 122, 10);
+            width: 50%;
+            margin: 5px 0;
+            border: 2px solid;
+            border-radius: 5px;
+        }
+
+        input[type="radio"] {
+            margin: 3px;
+            border: 2px solid rgb(66, 122, 10);
+            outline: none;
+            cursor: pointer;
+        }
+
+        input[type="radio"]:checked {
+            background-color: rgb(45, 135, 101);
+        }
+
+        input[type="checkbox"] {
+            color: rgb(66, 122, 10);
+            margin: 3px;
+            border: 2px solid green;
+        }
+
+        input[type="date"] {
+            margin: 3px;
+            border: 2px solid rgb(66, 122, 10);
+            border-radius: 5px;
+        }
+
+        select {
+            margin: 3px;
+            border: 2px solid rgb(66, 122, 10);
+            border-radius: 5px;
+        }
+
+        textarea {
+            margin: 3px;
+            width : 50%;
+            border: 2px solid rgb(66, 122, 10);
+            border-radius: 5px;
+            color: black;
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .success-message {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Billing address</h1>
+
+    <form id="form1" onsubmit="return validationCheck();">
+        <label for="fname">First name<br></label>
+        <input type="text" id="fname" name="fname">
+
+        <br>
+
+        <label for="lname">Last name<br></label>
+        <input type="text" id="lname" name="lname">
+
+        <br>
+
+        <label for="uname">Username <br>@</label>
+        <input type="text" id="uname" name="uname" required>
+
+        <br>
+
+        <label for="email">Email<br></label>
+        <input type="email" id="email" name="email" required>
+
+        <br>
+
+        <label for="password">Password<br></label>
+        <input type="password" id="password" name="password" required>
+
+        <br>
+
+        <label for="Gender">Gender<br></label> 
+        male<input type="radio" name="Gender" value="male">
+        female<input type="radio" name="Gender" value="female">
+
+        <br>
+
+        <label for="Consent">Consent to receive information<br></label> 
+        Agree<input type="checkbox" name="Consent" value="agree">
+
+        <br>
+
+        <label for="Bdate">Birth Date<br></label>
+        <input type="date" name="Bdate" value="Bdate">
+        <br>
+
+        <label for="country">Country<br></label>
+        <select id="country" name="country">
+            <option value="">Choose...</option>
+            <option value="korea">South Korea</option>
+            <option value="usa">United States</option>
+            <option value="canada">Canada</option>
+        </select>
+
+        <br>
+
+        <label for="address">Address (Optional)<br></label>
+        <textarea id="address" name="address" rows="2" placeholder="Address here..."></textarea>
+
+        <br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="message" class="success-message"></div>
+
+    <script>
+        function validationCheck() {
+            const userName = document.getElementById("uname").value;
+            const firstName = document.getElementById("fname").value;
+            const lastName = document.getElementById("lname").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (userName == "") {
+                alert("Type user name");
+                return false;
+            }
+
+            if (firstName == "") {
+                alert("Type first name");
+                return false;
+            }
+
+            if (lastName == "") {
+                alert("Type last name");
+                return false;
+            }
+
+            if (email == "") {
+                alert("Type email");
+                return false;
+            }
+
+            if (password == "") {
+                alert("Type password");
+                return false;
+            }
+
+            if (password.length < 4) {
+                alert("Password must be at least 4 characters long.");
+                return false;
+            }
+
+            const confirmSubmit = confirm("Submit?");
+            if (!confirmSubmit) {
+                return false; 
+            }
+
+            document.getElementById("message").innerText = "Submitted";
+            return true; 
+        }
+    </script>
+    
+</body>
+</html>
